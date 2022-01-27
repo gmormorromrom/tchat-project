@@ -1,0 +1,8 @@
+{{ form_start(form)}} 
+    {{ form_rest(form) }}
+    <input id="csrf_form" type="hidden" name="_token" value="{{ csrf_token('comment_item') }}" /> 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button type="submit" class="btn btn-success" id="btnNewCommentSubmit" >Envoyer message</button> 
+    </div>
+{{ form_end(form) }}

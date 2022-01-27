@@ -1,0 +1,11 @@
+sign:
+  in: sign in
+please: 
+  sign: 
+    in: authentication
+username: username
+password: password
+you.are.logged.in.as: You are logged in as
+logout: logout
+no:
+  messages: No messages

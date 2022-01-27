@@ -1,0 +1,11 @@
+sign:
+  in: se connecter
+please: 
+  sign: 
+    in: authentification
+username: utilisateur
+password: mot de passe
+you.are.logged.in.as: Vous êtes connecté en tant que
+logout: se déconnecter
+no:
+  messages: Aucun messages

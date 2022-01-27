@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test Comment
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script>
+		$(document).ready(function () {
+
+             // fonction sleep
+            function sleep(milliseconds) {
+                var start = new Date().getTime();
+                for (var i = 0; i < 1e7; i++) {
+                    if (new Date().getTime() - start > milliseconds) {
+                        break;
+                    }
+                }
+            }
+
+            $('#form_test').on('submit', function (evt) {  
+                if( !evt.isDefaultPrevented()){
+                    evt.preventDefault();
+                } 
+                console.log(evt.isDefaultPrevented());
+                console.log($(this).attr('action'));
+                console.log($(this).attr('method'));
+                $.ajax({
+                    method: $(this).attr('method'),
+                    url: $(this).attr('action'),
+                    data: $(this).serialize()
+                }).done(function (rdata, textStatus, xhr) {
+                    if (rdata['err']===200) {
+                        console.log(rdata['err']);
+                        $(document).find("#messError").append(rdata['message']);
+                        sleep(3000);
+                    }
+                }).fail(function () {
+                    console.log("error");
+                });
+                
+            });
+        });
+	</script>
+{% endblock %}
+
+{% block body %} 
+	<h2>New Test</h2>
+	<p id="messError" style="color: red;"></p>
+	{{ form_start(form) }}
+	{{ form_rest(form)}}
+    <button type="submit" class="btn btn-success">send</button>
+	{{ form_end(form)}}
+{% endblock %}
